@@ -15,11 +15,11 @@ public class Stack {
                 newStack[i]=stack[i];
             }
             stack=newStack;
-        } else {
-            stack[++topo]=elemento;
         }
+        stack[++topo]=elemento;
 
-        
+
+
     }
     int pop(){
         if (isEmpty()){
@@ -44,9 +44,7 @@ public class Stack {
     }
 
     boolean isFull(){
-        if (topo==stack.length-1){
-            return true;
-        } return false;
+        return topo==stack.length-1;
     }
 
     boolean isEmpty(){
@@ -58,6 +56,6 @@ public class Stack {
             System.out.println(stack[i]);
         }
     }
-   
+
 
 }
