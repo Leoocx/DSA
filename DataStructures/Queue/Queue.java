@@ -9,10 +9,15 @@ public class Queue {
 
     void enqueue(int elemento){
         if (isFull()){
-            throw new IllegalStateException("A Fila está cheia.");
+            int[] newQueue = new int[2*arr.length];
+            for (int i=0; i<=size;i++){
+                newQueue[i]=arr[i];
+            }
+            arr=newQueue;
         }
         arr[++size]=elemento;
-        
+
+
     }
     int dequeue(){
         if (!isEmpty()){
@@ -26,15 +31,11 @@ public class Queue {
     }
 
     boolean isFull(){
-        if (arr.length==size){
-            return true;
-        } return false;
+        return size == arr.length-1;
     }
 
     boolean isEmpty(){
-        if (size==-1){
-            return true;
-        } return false;
+        return size==-1;
     }
 
     void show(){
