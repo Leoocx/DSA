@@ -17,9 +17,6 @@ public class Stack {
             stack=newStack;
         }
         stack[++topo]=elemento;
-
-
-
     }
     int pop(){
         if (isEmpty()){
