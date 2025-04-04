@@ -10,14 +10,20 @@ public class Stack {
 
     void push(int elemento){
         if (isFull()){
-            throw new IllegalStateException("ERRO: A pilha está cheia.");
+            int[] newStack = new int[2*stack.length];
+            for (int i=0;i< stack.length;i++){
+                newStack[i]=stack[i];
+            }
+            stack=newStack;
+        } else {
+            stack[++topo]=elemento;
         }
-        stack[++topo]=elemento;
+
         
     }
     int pop(){
         if (isEmpty()){
-            throw new IllegalStateException("ERRO: A pilha está vazia.");
+            System.out.println("ERRO: A pilha está vazia.");
         }
         int elementoRemovido = stack[topo];
         stack[topo]=0;
@@ -38,7 +44,7 @@ public class Stack {
     }
 
     boolean isFull(){
-        if (topo==stack.length){
+        if (topo==stack.length-1){
             return true;
         } return false;
     }
@@ -52,5 +58,6 @@ public class Stack {
             System.out.println(stack[i]);
         }
     }
+   
 
 }
