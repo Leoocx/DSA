@@ -1,26 +1,32 @@
 public class QueueLinkedList {
-    LinkedList linkedList;
+    private LinkedList linkedList;
 
-    public QueueLinkedList(){
-        this.linkedList=new LinkedList<>();
+    public QueueLinkedList() {
+        this.linkedList = new LinkedList();
     }
-    void enqueue(int elemento){
+
+    // Insere no final da fila
+    public void enqueue(int elemento) {
         linkedList.add(elemento);
     }
 
-    void dequeue(){
-        linkedList.delete(linkedList.getFirst());
+    // Remove do início da fila
+    public void dequeue() {
+        if (!isEmpty()) {
+            linkedList.delete(linkedList.getFirst().getValue());
+        } else {
+            System.out.println("A fila está vazia.");
+        }
     }
 
-    void show(){
-        for (int i=0;i<linkedList.getSize()-1;i++){
+    // Mostra todos os elementos da fila
+    public void show() {
+        for (int i = 0; i < linkedList.getSize(); i++) {
             System.out.println(linkedList.get(i).getValue());
         }
     }
 
-    boolean isEmpty(){
-        if (linkedList.getSize()==0){
-            return true;
-        } return false;
+    public boolean isEmpty() {
+        return linkedList.getSize() == 0;
     }
 }

@@ -1,48 +1,41 @@
 public class Queue {
-    int[] arr;
-    int size;
+    private int[] arr;
+    private int inicio, fim, size, capacity;
 
-    public Queue(int capacidade){
-        this.arr=new int[capacidade];
-        this.size=-1;
+    public Queue(int capacity){
+        arr = new int[capacity];
+        this.capacity = capacity;
+        inicio = 0;
+        fim = 0;
+        size = 0;
     }
 
-    void enqueue(int elemento){
-        if (isFull()){
-            int[] newQueue = new int[2*arr.length];
-            for (int i=0; i<=size;i++){
+    void enqueue(int val){
+        if (size == capacity) {
+            int[] newQueue = new int[size*2];
+            for (int i=0;i<size;i++){
                 newQueue[i]=arr[i];
             }
             arr=newQueue;
         }
-        arr[++size]=elemento;
-
-
-    }
-    int dequeue(){
-        if (!isEmpty()){
-            int elementoRemovido = arr[0];
-            for (int i=1; i<arr.length; i++){
-                arr[i-1]=arr[i];
-            }
-            size--;
-            return elementoRemovido;
-        } return -1; 
+        arr[fim] = val;
+        fim = (fim + 1) % capacity;
+        size++;
     }
 
-    boolean isFull(){
-        return size == arr.length-1;
+    void dequeue(){
+        if (isEmpty()) {
+            System.out.println("A fila está vazia.");
+        };
+        inicio = (inicio + 1) % capacity;
+        size--;
     }
 
     boolean isEmpty(){
-        return size==-1;
+        return size == 0;
     }
 
-    void show(){
-        for (int i=0; i<arr.length; i++){
-            System.out.println(arr[i]);
-        }
-
+    int peek(){
+        return arr[inicio];
     }
-
 }
