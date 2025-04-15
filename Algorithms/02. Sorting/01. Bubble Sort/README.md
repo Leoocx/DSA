@@ -9,6 +9,9 @@ O Bubble Sort é um dos algoritmos de ordenação mais simples. Ele funciona com
   4. O maior elemento "borbulha" para o final a cada iteração.
   5. O processo se repete até que não sejam necessárias mais trocas.
 
+![1_7seGXJi3te9beNfpAvFXEQ](https://github.com/user-attachments/assets/144afda2-d607-42a7-8c52-3ead547657cd)
+
+
 # Complexidade
   1. Melhor caso (já ordenado): O(n)
 
