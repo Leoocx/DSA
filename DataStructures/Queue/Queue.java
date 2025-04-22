@@ -12,11 +12,16 @@ public class Queue {
 
     void enqueue(int val){
         if (size == capacity) {
-            int[] newQueue = new int[size*2];
-            for (int i=0;i<size;i++){
-                newQueue[i]=arr[i];
+            // Cria um novo array com o dobro do tamanho
+            int[] newQueue = new int[capacity * 2];
+            // Move os elementos para o novo array
+            for (int i = 0; i < size; i++) {
+                newQueue[i] = arr[(inicio + i) % capacity];
             }
-            arr=newQueue;
+            arr = newQueue;
+            inicio = 0; // O início agora será 0, pois o array foi refeito
+            fim = size; // O fim será igual ao tamanho da fila após a cópia
+            capacity *= 2; // Atualiza a capacidade
         }
         arr[fim] = val;
         fim = (fim + 1) % capacity;
@@ -26,7 +31,8 @@ public class Queue {
     void dequeue(){
         if (isEmpty()) {
             System.out.println("A fila está vazia.");
-        };
+            return;
+        }
         inicio = (inicio + 1) % capacity;
         size--;
     }
@@ -36,6 +42,10 @@ public class Queue {
     }
 
     int peek(){
+        if (isEmpty()) {
+            System.out.println("A fila está vazia.");
+            return -1; // Retorna -1 em caso de erro
+        }
         return arr[inicio];
     }
 }
